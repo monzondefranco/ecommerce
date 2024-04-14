@@ -1,9 +1,12 @@
 import Hero from "@/components/Hero"
+import ProductSection from "@/components/Product/ProductSection";
+import { Suspense } from "react";
 
-export default function Home() {
+export default async function Page() {
   return (
-    <div>
+    <Suspense>
       <Hero />
-    </div>
+      <ProductSection />
+    </Suspense>
   );
 }
