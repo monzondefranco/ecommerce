@@ -20,7 +20,7 @@ const api = {
 const STRAPI_URL = process.env.STRAPI_URL
 const STRAPI_TOKEN = process.env.STRAPI_TOKEN
 
-const fetchApi = async <T>(
+export const fetchApi = async <T>(
     url: string,
     tags?: string[],
     init?: RequestInit,
@@ -77,10 +77,6 @@ const fetchApi = async <T>(
     query?: any
   }
   
-  interface PostParams<T = any> {
-    body?: T
-  }
-  
   export interface Entry<T> {
     data?: {
       id: number
@@ -103,6 +99,7 @@ const fetchApi = async <T>(
   }
 
   type ProductsEntry = EntityEntry<Product>
+  type ProductEntry = Entry<Product>
 
 
   type Product = {

@@ -1,5 +1,6 @@
 import React from 'react'
 import Image from 'next/image'
+import { formatCurrency } from '@/helpers/number'
 
 interface Props {
     title?: string
@@ -16,7 +17,7 @@ export default async function ProductList({title, description, pricing, banner} 
         }
         <div>{title}</div>
         <div>{description}</div>
-        <div>{pricing}</div>
+        {pricing && <div>{formatCurrency(pricing)}</div>}
     </div>
   )
 }
