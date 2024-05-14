@@ -1,5 +1,5 @@
-import Hero from "@/components/Hero"
-import ProductSection from "@/components/Product/ProductSection";
+import Hero from "@/app/components/Hero"
+import ProductSection from "@/app/components/Product/ProductSection";
 import { Suspense } from "react";
 
 export default async function Page() {

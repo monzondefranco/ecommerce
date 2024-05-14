@@ -29,6 +29,8 @@ export default async function ProductDetail({params}: Props) {
         <div>{product.product?.title}</div>
         <div>{product.product?.description}</div>
         {price && <div>{formatCurrency(price)}</div>}
+        {product.product?.instantDelivery && <div>En stock</div>}
+        <button>Add to cart</button>
     </div>
   )
 }

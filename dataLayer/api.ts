@@ -107,6 +107,7 @@ export const fetchApi = async <T>(
     description?: string
     banner?: MediaEntry
     pricing?: number
+    instantDelivery?: boolean
   }
 
   export type Media = {
