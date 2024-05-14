@@ -11,6 +11,7 @@ export async function getProducts() {
               'title',
               'description',
               'pricing',
+              'instantDelivery',
             ],
           },
         },
@@ -24,6 +25,7 @@ export type Product = {
     description?: string
     banner?: MediaEntry
     pricing?: number
+    instantDelivery?: boolean
 }
 
 type GetProductResponse = {

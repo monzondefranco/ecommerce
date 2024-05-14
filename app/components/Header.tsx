@@ -1,6 +1,11 @@
+'use client'
+import { UserButton, useUser } from '@clerk/nextjs'
 import React from 'react'
+import ShoppingCartIcon from './icons/ShoppingCartIcon'
 
 function Header() {
+  const user = useUser()
+  console.log('user', user)
   return (
     <header className="bg-white">
         <div className="mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8">
@@ -21,7 +26,7 @@ function Header() {
               <nav aria-label="Global">
                 <ul className="flex items-center gap-6 text-sm">
                   <li>
-                    <a className="text-gray-500 transition hover:text-gray-500/75" href="#"> Home </a>
+                    <a className="text-gray-500 transition hover:text-gray-500/75" href="/"> Home </a>
                   </li>    
   
                   <li>
@@ -38,26 +43,34 @@ function Header() {
                 </ul>
               </nav>
             </div>    
-  
             <div className="flex items-center gap-4">
-              <div className="sm:flex sm:gap-4">
-                <a
-                  className="rounded-md bg-primary hover:bg-blue-600 px-5 py-2.5 text-sm font-medium text-white shadow"
-                  href="#"
-                >
-                  Login
-                </a>    
-  
-                <div className="hidden sm:flex">
+              {!user.isSignedIn ? (
+                <div className="sm:flex sm:gap-4">
                   <a
-                    className="rounded-md bg-gray-100 hover:text-blue-600/75 px-5 py-2.5 text-sm font-medium text-teal-600"
-                    href="#"
+                    className="rounded-md bg-primary hover:bg-blue-600 px-5 py-2.5 text-sm font-medium text-white shadow"
+                    href='/sign-in'
                   >
-                    Register
+                    Login
+                  </a>    
+    
+                  <div className="hidden sm:flex">
+                    <a
+                      className="rounded-md bg-gray-100 hover:text-blue-600/75 px-5 py-2.5 text-sm font-medium text-teal-600"
+                      href="/sign-in"
+                    >
+                      Register
                   </a>
                 </div>
               </div>    
-  
+              ) : (
+              <div className="flex items-center gap-3">
+                <h2 className="flex gap-1 cursor-pointer">
+                  <ShoppingCartIcon /> (0)
+                </h2>
+                <UserButton />
+              </div>
+              )}
+              
               <div className="block md:hidden">
                 <button className="rounded bg-gray-100 p-2 text-gray-600 transition hover:text-gray-600/75">
                   <svg
